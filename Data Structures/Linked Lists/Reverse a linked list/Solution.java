@@ -76,29 +76,17 @@ class Result {
      */
 
     public static SinglyLinkedListNode reverse(SinglyLinkedListNode llist) {
-        ArrayDeque<Integer> continArrayDeque = new ArrayDeque<>();
+        SinglyLinkedListNode prev=null;
+        SinglyLinkedListNode current=llist;
+        SinglyLinkedListNode next=null;
 
-        if (llist==null) {
-            return llist;
+        while (current!=null) {
+            next=current.next;
+            current.next=prev;
+            prev=current;
+            current=next;
         }
-
-        while (llist!=null) {
-            continArrayDeque.push(llist.data);
-            llist=llist.next;
-        }
-
-        SinglyLinkedListNode resultHead=new SinglyLinkedListNode(continArrayDeque.pop());
-        SinglyLinkedListNode movingHead = resultHead;
-
-        while (!continArrayDeque.isEmpty()) {
-        SinglyLinkedListNode tmpList = new SinglyLinkedListNode(continArrayDeque.pop());
-            
-            movingHead.next=tmpList;
-            movingHead=movingHead.next;
-
-        }
-
-        return resultHead;
+        return prev;
     }
 
 }
