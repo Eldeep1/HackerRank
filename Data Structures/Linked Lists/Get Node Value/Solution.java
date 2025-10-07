@@ -77,17 +77,16 @@ class Result {
 }
 
     public static int getNode(SinglyLinkedListNode llist, int positionFromTail) {
-        ArrayDeque<Integer> elementsDeque=new ArrayDeque<>();
-        while (llist!=null) {
-            elementsDeque.push(llist.data);
-            llist=llist.next;
-        }
-        
-        while (positionFromTail>0) {
-            elementsDeque.pop();
-            positionFromTail--;
-        }
-        return elementsDeque.pop();
+       SinglyLinkedListNode fastPointer=llist;
+       SinglyLinkedListNode slowPointer=llist;
+       for (int i = 0; i < positionFromTail; i++) {
+        fastPointer=fastPointer.next;
+       }
+       while (fastPointer.next!=null) {
+        fastPointer=fastPointer.next;
+        slowPointer=slowPointer.next;
+       }
+        return slowPointer.data;
     }
     private static final Scanner scanner = new Scanner(System.in);
 
