@@ -24,11 +24,11 @@ class Solution {
 	public static Node lca(Node root, int v1, int v2) {
       	Node firstValueMovingPointer=root;
       	Node secondValueMovingPointer=root;
-        //there should be a map that stores the node with it's parent so that we can find the lca....
+
         List<Node> firstAncestorsList = new ArrayList<>();
         List<Node> secondAncestorsList = new ArrayList<>();
+        
         while (firstValueMovingPointer.data!=v1&&secondValueMovingPointer.data!=v2) {
-
             if (firstValueMovingPointer.data!=v1) {
                  firstAncestorsList.add(firstValueMovingPointer);
                 if (firstValueMovingPointer.data<v1) {
@@ -38,9 +38,6 @@ class Solution {
                     firstValueMovingPointer=firstValueMovingPointer.left;
                 }
             }
-
-            
-
                         
             if (secondValueMovingPointer.data!=v2) {          
                 secondAncestorsList.add(secondValueMovingPointer);
@@ -52,9 +49,8 @@ class Solution {
                     secondValueMovingPointer=secondValueMovingPointer.left;
                 }
             }
-
         }
-
+        //adding the last nodes to the list
         firstAncestorsList.add(firstValueMovingPointer);
         secondAncestorsList.add(secondValueMovingPointer);
 
