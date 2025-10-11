@@ -54,12 +54,9 @@ class Solution {
             }
 
         }
-            if (firstValueMovingPointer != null) {
+
         firstAncestorsList.add(firstValueMovingPointer);
-    }
-    if (secondValueMovingPointer != null) {
         secondAncestorsList.add(secondValueMovingPointer);
-    }
 
         Set<Node> nodesSet= new HashSet<>(firstAncestorsList);
 
