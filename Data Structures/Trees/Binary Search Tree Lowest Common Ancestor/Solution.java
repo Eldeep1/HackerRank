@@ -61,25 +61,14 @@ class Solution {
         secondAncestorsList.add(secondValueMovingPointer);
     }
 
-        Set<Node> nodesSet= new HashSet<>();
-        int firstArarySize=firstAncestorsList.size()-1;
-        int secondArarySize=secondAncestorsList.size()-1;
-        int loopSize=firstArarySize>secondArarySize?firstArarySize:secondArarySize;
+        Set<Node> nodesSet= new HashSet<>(firstAncestorsList);
 
-        while (loopSize>0) {
-            if (loopSize<=firstArarySize) {
-                if (!nodesSet.add(firstAncestorsList.get(loopSize))) {
-                return firstAncestorsList.get(loopSize);                    
-                }
+        for (int i = secondAncestorsList.size()-1; i >= 0; i--) {
+            if (!nodesSet.add(secondAncestorsList.get(i))) {
+                return secondAncestorsList.get(i);
             }
-             if (loopSize<=secondArarySize) {
-
-                if (!nodesSet.add(secondAncestorsList.get(loopSize))) {
-                    return secondAncestorsList.get(loopSize);                    
-                }
-            }
-            loopSize--;
         }
+
         return root;
     }
 
