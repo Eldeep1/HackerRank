@@ -2,6 +2,7 @@ import java.io.*;
 import java.math.*;
 import java.security.*;
 import java.text.*;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.function.*;
@@ -24,35 +25,10 @@ class Result {
 
     public static String findDay(int month, int day, int year) {
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month-1, day);
-       int dayNum= calendar.get(calendar.DAY_OF_WEEK);
-       String dayName="";
-       switch (dayNum) {
-        case 1:
-            dayName="SUNDAY";
-            break;
-       case 2:
-            dayName="MONDAY";
-            break;
-       case 3:
-            dayName="TUESDAY";
-            break;
-       case 4:
-            dayName="WEDNESDAY";
-            break;
-       case 5:
-            dayName="THURSDAY";
-            break;
-       case 6:
-            dayName="FRIDAY";
-            break;
-       case 7:
-            dayName="SATURDAY";
-            break;
-        default:
-            break;
-       }
+        LocalDate date = LocalDate.of(year, month, day);
+
+        String dayName = date.getDayOfWeek().toString();
+    
         return dayName;
     }
 
