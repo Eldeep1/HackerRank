@@ -9,7 +9,7 @@ public class Solution {
         // Complete the function
         // 'smallest' must be the lexicographically smallest substring of length 'k'
         // 'largest' must be the lexicographically largest substring of length 'k'
-        for (int i = 1; i < s.length()-k; i++) {
+        for (int i = 1; i < s.length()-k+1; i++) {
             String tmp = s.substring(i, i+k);
             if (largest.compareTo(tmp)<=0) {
                 largest=tmp;
